@@ -5,9 +5,10 @@
     <meta charset="UTF-8" />
     <title>Admin Login | UtkalDarshan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             background: #FFF8EA;
@@ -36,8 +37,8 @@
         <form id="loginForm" class="space-y-4">
             <div>
                 <label class="block mb-1 font-semibold">Username</label>
-                <input type="text" id="username" class="border rounded px-3 py-2 w-full" required autocomplete="on"
-                    autofocus placeholder="Admin or your name">
+                <input type="text" id="username" class="border rounded px-3 py-2 w-full" required autofocus
+                    autocomplete="on" placeholder="Admin or your name">
             </div>
             <div>
                 <label class="block mb-1 font-semibold">Password</label>
@@ -46,12 +47,15 @@
             </div>
             <div id="loginError" class="text-red-600 text-sm text-center"></div>
             <button type="submit"
-                class="w-full py-2 rounded bg-gradient-to-r from-orange-400 to-orange-700 text-white font-bold hover:from-orange-600 hover:to-orange-900 shadow transition-transform">Login</button>
+                class="w-full py-2 rounded bg-gradient-to-r from-orange-400 to-orange-700 text-white font-bold hover:from-orange-600 hover:to-orange-900 shadow transition-transform">
+                Login
+            </button>
         </form>
-        <div class="text-center mt-6 text-xs text-gray-400">© 2025 UtkalDarshan. Interactive Odisha Tourism Admin</div>
+        <div class="text-center mt-6 text-xs text-gray-400">&copy; 2025 UtkalDarshan. Interactive Odisha Tourism Admin
+        </div>
     </div>
     <script>
-        // Demo admin credentials—customize/add for real teams
+        // Demo admin credentials (change as needed)
         const ADMINS = [
             { user: "admin", pass: "utkal@2025", avatar: "AD" },
             { user: "Surya Pratap Singh", pass: "surya@2025", avatar: "SP" },
@@ -68,12 +72,18 @@
                 document.getElementById("loginError").innerText = "Login successful! Redirecting...";
                 document.getElementById("loginError").classList.add("animate__animated", "animate__fadeInDown");
                 setTimeout(function () {
-                    window.location.href = 'https://surya7540.github.io/UtkalDarshan/?admin=' + encodeURIComponent(user) + '&avatar=' + encodeURIComponent(found.avatar);
+                    window.location.href =
+                        'https://surya7540.github.io/UtkalDarshan/?admin=' +
+                        encodeURIComponent(user) +
+                        '&avatar=' +
+                        encodeURIComponent(found.avatar);
                 }, 1000);
             } else {
                 document.getElementById("loginError").innerText = "Invalid credentials. Try again.";
                 document.getElementById("loginError").classList.add("animate__shakeX");
-                setTimeout(() => { document.getElementById("loginError").classList.remove("animate__shakeX"); }, 600);
+                setTimeout(() => {
+                    document.getElementById("loginError").classList.remove("animate__shakeX");
+                }, 600);
             }
         };
     </script>
