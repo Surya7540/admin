@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Login | UtkalDarshan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            background: #FFF8EA;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .admin-avatar {
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            background: #ec7014;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 38px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+    <div id="loginArea" class="bg-white shadow-lg p-8 rounded-xl w-full max-w-sm animate__animated animate__fadeIn">
+        <h1 class="text-2xl font-bold text-center text-orange-700 mb-6 tracking-wide">UtkalDarshan Admin Login</h1>
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block mb-1 font-semibold">Username</label>
+                <input type="text" id="username" class="border rounded px-3 py-2 w-full" required autocomplete="on"
+                    autofocus placeholder="Admin or your name">
+            </div>
+            <div>
+                <label class="block mb-1 font-semibold">Password</label>
+                <input type="password" id="password" class="border rounded px-3 py-2 w-full" required autocomplete="off"
+                    placeholder="********">
+            </div>
+            <div id="loginError" class="text-red-600 text-sm text-center"></div>
+            <button type="submit"
+                class="w-full py-2 rounded bg-gradient-to-r from-orange-400 to-orange-700 text-white font-bold hover:from-orange-600 hover:to-orange-900 shadow transition-transform">Login</button>
+        </form>
+        <div class="text-center mt-6 text-xs text-gray-400">© 2025 UtkalDarshan. Interactive Odisha Tourism Admin</div>
+    </div>
+    <script>
+        // Demo admin credentials—customize/add for real teams
+        const ADMINS = [
+            { user: "admin", pass: "utkal@2025", avatar: "AD" },
+            { user: "Surya Pratap Singh", pass: "surya@2025", avatar: "SP" },
+            { user: "Suman Srichandan", pass: "suman@2025", avatar: "SS" },
+            { user: "Saloni Thatoi", pass: "saloni@2025", avatar: "ST" },
+            { user: "Pragya Prarambika Parida", pass: "pragya@2025", avatar: "PP" }
+        ];
+        document.getElementById("loginForm").onsubmit = function (e) {
+            e.preventDefault();
+            const user = document.getElementById("username").value.trim();
+            const pass = document.getElementById("password").value;
+            let found = ADMINS.find(a => a.user === user && a.pass === pass);
+            if (found) {
+                document.getElementById("loginError").innerText = "Login successful! Redirecting...";
+                document.getElementById("loginError").classList.add("animate__animated", "animate__fadeInDown");
+                setTimeout(function () {
+                    window.location.href = 'https://surya7540.github.io/UtkalDarshan/?admin=' + encodeURIComponent(user) + '&avatar=' + encodeURIComponent(found.avatar);
+                }, 1000);
+            } else {
+                document.getElementById("loginError").innerText = "Invalid credentials. Try again.";
+                document.getElementById("loginError").classList.add("animate__shakeX");
+                setTimeout(() => { document.getElementById("loginError").classList.remove("animate__shakeX"); }, 600);
+            }
+        };
+    </script>
+</body>
+
+</html>
